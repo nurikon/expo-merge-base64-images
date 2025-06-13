@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["ExpoMergeBase64ImagesModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.mergebase64images.ExpoMergeBase64ImagesModule"]
+  }
+}

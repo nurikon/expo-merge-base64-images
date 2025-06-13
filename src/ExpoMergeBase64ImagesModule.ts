@@ -1,11 +1,6 @@
 import { NativeModule, requireNativeModule } from 'expo';
 
-import { ExpoMergeBase64ImagesModuleEvents } from './ExpoMergeBase64Images.types';
-
-declare class ExpoMergeBase64ImagesModule extends NativeModule<ExpoMergeBase64ImagesModuleEvents> {
-  PI: number;
-  hello(): string;
-  setValueAsync(value: string): Promise<void>;
+declare class ExpoMergeBase64ImagesModule extends NativeModule {
   mergeBase64Images(base64_1: string, base64_2: string): Promise<string>;
 }
 

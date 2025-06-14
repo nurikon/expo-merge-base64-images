@@ -1,6 +1,6 @@
 import ExpoModulesCore
 
-public class ExpoSettingsModule: Module {
+public class ExpoMergeBase64ImagesModule: Module {
   public func definition() -> ModuleDefinition {
     Name("ExpoMergeBase64Images")
   }

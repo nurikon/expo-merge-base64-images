@@ -9,7 +9,7 @@ import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import java.net.URL
 
-class ExpoSettingsModule : Module() {
+class ExpoMergeBase64ImagesModule : Module() {
   override fun definition() = ModuleDefinition {
     Name("ExpoMergeBase64Images")
 

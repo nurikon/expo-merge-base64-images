@@ -54,8 +54,8 @@ class ExpoMergeBase64ImagesModule : Module() {
 
   private fun bitmapToBase64(bitmap: Bitmap): String {
       val outputStream = java.io.ByteArrayOutputStream()
-      bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+      bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
       val byteArray = outputStream.toByteArray()
-      return "data:image/png;base64," + android.util.Base64.encodeToString(byteArray, android.util.Base64.NO_WRAP)
+      return "data:image/jpeg;base64," + Base64.encodeToString(byteArray, Base64.NO_WRAP)
   }
 }

@@ -8,6 +8,9 @@ import java.io.ByteArrayOutputStream
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 import java.net.URL
+import android.content.Context
+import java.io.File
+import java.util.UUID
 
 class ExpoMergeBase64ImagesModule : Module() {
   override fun definition() = ModuleDefinition {
@@ -30,7 +33,19 @@ class ExpoMergeBase64ImagesModule : Module() {
         android.util.Log.d("ExpoMergeBase64Images", "Base64 result created")
         android.util.Log.d("ExpoMergeBase64Images", "Result Base64 (start): ${resultBase64}")
 
-        return@AsyncFunction resultBase64
+        // Save to cache directory under /cache/Merged/
+        val context = appContext.reactContext as Context
+        val mergedDir = File(context.cacheDir, "Merged")
+        if (!mergedDir.exists()) {
+          mergedDir.mkdirs()
+        }
+        val fileName = "${UUID.randomUUID()}.jpg"
+        val outputFile = File(mergedDir, fileName)
+        val outputStream = outputFile.outputStream()
+        merged.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        outputStream.flush()
+        outputStream.close()
+        return@AsyncFunction outputFile.toURI().toString()
       } catch (e: Exception) {
         throw e
       }
